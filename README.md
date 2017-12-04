@@ -21,6 +21,7 @@
 # Klavye Kısayolları:
 
 | Kombinasyon | Açıklama |
+| --- | --- |
 |  Ctrl + Shift + T | Terminal Aç |
 |  Ctrl + Shift + C | Kopyala |
 |  Ctrl + Shift + V | Yapıştır |
