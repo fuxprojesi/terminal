@@ -20,20 +20,20 @@
 
 # Klavye Kısayolları:
 
-*  Ctrl + Shift + T                  - Terminal Aç
-*  Ctrl + Shift + C                  - Kopyala
-*  Ctrl + Shift + V                  - Yapıştır
-*  Ctrl + Shift + E                  - Ekranı Temizle
-*  Ctrl + Shift + H                  - Komut Geçmişi
-*  Ctrl + Shift + Q                  - Terminali Kapat
-
-*  Ctrl + Shift + R                  - Geçmiş Komutlardan Tamamla (Arama)
-*  Ctrl + Shift + Up                 - Çıktıyı Yukarı Kaydır (Satır)
-*  Ctrl + Shift + DOWN               - Çıktıyı Aşağı Kaydır (Satır)
-*  Ctrl + Shift + PgUP               - Çıktıyı Yukarı Kaydır (Sayfa)
-*  Ctrl + Shift + PgDn               - Çıktıyı Aşağı Kaydır (Sayfa)
-*  Ctrl + Shift + HOME               - En Başa Git
-*  Ctrl + Shift + End                - En Sona Git
+| Kombinasyon | Açıklama |
+|  Ctrl + Shift + T | Terminal Aç |
+|  Ctrl + Shift + C | Kopyala |
+|  Ctrl + Shift + V | Yapıştır |
+|  Ctrl + Shift + E | Ekranı Temizle |
+|  Ctrl + Shift + H | Komut Geçmişi |
+|  Ctrl + Shift + Q | Terminali Kapat |
+|  Ctrl + Shift + R | Geçmiş Komutlardan Tamamla (Arama) |
+|  Ctrl + Shift + Up | Çıktıyı Yukarı Kaydır (Satır) |
+|  Ctrl + Shift + DOWN | Çıktıyı Aşağı Kaydır (Satır) |
+|  Ctrl + Shift + PgUP | Çıktıyı Yukarı Kaydır (Sayfa) |
+|  Ctrl + Shift + PgDn | Çıktıyı Aşağı Kaydır (Sayfa) |
+|  Ctrl + Shift + HOME | En Başa Git |
+|  Ctrl + Shift + End | En Sona Git |
   
 # Detaylı açıklama:  
 
