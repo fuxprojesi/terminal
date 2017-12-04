@@ -12,10 +12,9 @@
 
 *  Özel klavye kısayolları.
 *  Oturum açan kullanıcıya göre değişken başlık.
-*  Sürükle-Bırak ile dizin, dosya konumlarını terminale aktarır.
+*  Sürükle-Bırak ile dizin, dosya konumlarını terminale aktarma.
 *  Fare sağ tuş menüsü (Terminal Aç, Kopyala, Yapıştır, Ekranı Temizle, Komut Geçmişi, Terminali Kapat)
 *  Fare ile seçilerek kopyalanan metni önbelleğe alır. Metni ister terminale isterseniz herhangi bir belgeye yapıştırabilirsiniz.
-*  Herhangi bir belgeden kopyalanan metni önbelleğe alır. Metni terminale yapıştırabilirsiniz.
 *  Standart bir terminaldir ve diğer tüm terminallerde yapılan herşey yapılabilir.
 
 # Klavye Kısayolları:
