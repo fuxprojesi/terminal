@@ -43,17 +43,20 @@
   
  # Yazılım Gereksinimleri
  
-  gtk3-devel
-  vte291-devel
-  coreutils
-  bash
-  gcc
+ * gtk3-devel
+ * vte291-devel
+ * coreutils
+ * bash
+ * gcc
   
  # Derleme ve Çalıştırma
  
- Derleme dizini'nin fuat kullanıcısına ait ev dizininde ki terminal-master olduğu varsayılmıştır!
- gcc `pkg-config --cflags --libs gtk+-3.0 vte-2.91` -o terminal /home/fuat/terminal-master/src/terminal.c
+ * Derleme dizini'nin fuat kullanıcısına ait ev dizininde ki terminal-master olduğu varsayılmıştır!
  
- Derleme tamamlanınca bulunduğunuz dizinde terminal adı ile bir ikili dosya oluşacaktır. Bu dosyayı /usr/bin dizini içine kopyalayın.
- /home/fuat/terminal-master/terminal.desktop dosyasını da /usr/share/applications dizinine kopyalayın.
- Dilerseniz LICENSE ve README.md dosyalarını /usr/share/doc dizini içerisinde terminal adında bir dizin oluşturarak içine kopyalayabilirsiniz.
+ ## Komut
+ 
+ * gcc `pkg-config --cflags --libs gtk+-3.0 vte-2.91` -o terminal /home/fuat/terminal-master/src/terminal.c
+ 
+ * Derleme tamamlanınca bulunduğunuz dizinde terminal adı ile bir ikili dosya oluşacaktır. Bu dosyayı /usr/bin dizini içine kopyalayın.
+ * /home/fuat/terminal-master/terminal.desktop dosyasını da /usr/share/applications dizinine kopyalayın.
+ * Dilerseniz LICENSE ve README.md dosyalarını /usr/share/doc dizini içerisinde terminal adında bir dizin oluşturarak içine kopyalayabilirsiniz.
