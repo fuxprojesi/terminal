@@ -74,32 +74,21 @@ int main(int argc, char *argv[])
 
     VtePtyFlags pty_flags = VTE_PTY_DEFAULT;
 
-    const char *working_dir;
-    working_dir = g_get_home_dir();
-
     gchar **envp = g_get_environ();
     gchar **command = (gchar *[]){g_strdup(g_environ_getenv(envp, "SHELL")), NULL };
     g_strfreev(envp);
 
-    char **enviroment = malloc(2*sizeof(void *));
-    enviroment[0] = getenv("PATH");
-    enviroment[1] = NULL;
-
-    GSpawnFlags spawn_flags = G_SPAWN_SEARCH_PATH_FROM_ENVP | VTE_SPAWN_NO_PARENT_ENVV;
-
     vte_terminal_spawn_sync(VTE_TERMINAL(terminal),
                             pty_flags,
-                            working_dir,/* working directory */
+                            NULL,       /* working directory */
                             command,    /* command           */
-                            enviroment, /* environment       */
-                            spawn_flags,/* spawn flags       */
+                            NULL,       /* environment       */
+                            0,          /* spawn flags       */
                             NULL,       /* child setup       */
                             NULL,       /* data              */
                             NULL,       /* child pid         */
                             NULL,       /* cancelable        */
                             NULL);      /* error             */
-
-    g_free(enviroment);
 
     vte_terminal_set_scrollback_lines(VTE_TERMINAL(terminal), -1);
     vte_terminal_set_scroll_on_output(VTE_TERMINAL(terminal), TRUE);
