@@ -42,7 +42,7 @@ static gboolean on_title_changed(GtkWidget *terminal, gpointer user_data)
 /* Main Function */
 int main(int argc, char *argv[])
 {
-    GtkWidget *window, *terminal;
+    GtkWidget *window, *terminal, *scrolled;
     GdkRGBA back_rgba = { 0, 0, 0, 0.9 };
     GdkRGBA front_rgba = { 1, 1, 1, 1.0 };
     PangoFontDescription *font = NULL;
@@ -61,6 +61,10 @@ int main(int argc, char *argv[])
     visual = gdk_screen_get_rgba_visual(gtk_widget_get_screen(window));
     gtk_widget_set_visual(GTK_WINDOW(window), visual);
 
+    scrolled = gtk_scrolled_window_new(NULL, NULL);
+    gtk_scrolled_window_set_overlay_scrolling(GTK_SCROLLED_WINDOW(scrolled), 5);
+    gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(scrolled), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+
     terminal = vte_terminal_new();
     vte_terminal_set_color_background(VTE_TERMINAL(terminal), &back_rgba);
     vte_terminal_set_color_foreground(VTE_TERMINAL(terminal), &front_rgba);
@@ -68,19 +72,34 @@ int main(int argc, char *argv[])
     font = pango_font_description_from_string("Monospace Regular 11");
     vte_terminal_set_font(VTE_TERMINAL(terminal), font);
 
+    VtePtyFlags pty_flags = VTE_PTY_DEFAULT;
+
+    const char *working_dir;
+    working_dir = g_get_home_dir();
+
     gchar **envp = g_get_environ();
     gchar **command = (gchar *[]){g_strdup(g_environ_getenv(envp, "SHELL")), NULL };
     g_strfreev(envp);
 
+    char **enviroment = malloc(2*sizeof(void *));
+    enviroment[0] = getenv("PATH");
+    enviroment[1] = NULL;
+
+    GSpawnFlags spawn_flags = G_SPAWN_SEARCH_PATH_FROM_ENVP | VTE_SPAWN_NO_PARENT_ENVV;
+
     vte_terminal_spawn_sync(VTE_TERMINAL(terminal),
-        VTE_PTY_DEFAULT,
-        NULL,       /* working directory */
-        command,    /* command           */
-        NULL,       /* environment       */
-        0,          /* spawn flags       */
-        NULL, NULL, /* child setup       */
-        NULL,       /* child pid         */
-        NULL, NULL);
+                            pty_flags,
+                            working_dir,/* working directory */
+                            command,    /* command           */
+                            enviroment, /* environment       */
+                            spawn_flags,/* spawn flags       */
+                            NULL,       /* child setup       */
+                            NULL,       /* data              */
+                            NULL,       /* child pid         */
+                            NULL,       /* cancelable        */
+                            NULL);      /* error             */
+
+    g_free(enviroment);
 
     vte_terminal_set_scrollback_lines(VTE_TERMINAL(terminal), -1);
     vte_terminal_set_scroll_on_output(VTE_TERMINAL(terminal), TRUE);
@@ -101,11 +120,15 @@ int main(int argc, char *argv[])
 
     g_signal_connect(terminal, "button-press-event", G_CALLBACK(terminal_right_click), NULL);
 
-    gtk_container_add(GTK_CONTAINER(window), terminal);
+    gtk_container_add(GTK_CONTAINER(scrolled), terminal);
     gtk_widget_show_all(terminal);
+
+    gtk_container_add(GTK_CONTAINER(window), scrolled);
+    gtk_widget_show_all(scrolled);
 
     gtk_widget_set_size_request(window, 765, 360);
     gtk_widget_show_all(window);
 
     gtk_main();
+    exit(0);
 }
