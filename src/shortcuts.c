@@ -64,7 +64,7 @@ static gboolean on_key_press(GtkWidget *terminal, GdkEventKey *event, gpointer u
         if (event->state & GDK_CONTROL_MASK){
             if (event->state & GDK_SHIFT_MASK){
                 char cmd[1000];
-                strcpy(cmd, "terminal");
+                strcpy(cmd, "terminal & disown");
                 system(cmd);
                 return TRUE;
             }
