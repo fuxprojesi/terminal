@@ -24,7 +24,6 @@ static gboolean on_drag_drop(GtkWidget *terminal, GdkDragContext *context, gint 
     gboolean valid;
     GdkAtom target;
 
-    const gchar *name = gtk_widget_get_name(terminal);
     valid = TRUE;
 
     if (gdk_drag_context_list_targets(context))
@@ -49,9 +48,7 @@ static gboolean on_drag_data_received(GtkWidget *terminal, GdkDragContext *conte
     gboolean success = FALSE;
     gboolean success_data = FALSE;
 
-    const gchar *name = gtk_widget_get_name(terminal);
-
-    if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) >= 0))
+    if((selection_data != NULL) && (gtk_selection_data_get_length(selection_data) > 0))
     {
 
         if (gdk_drag_context_get_suggested_action(context) == GDK_ACTION_COPY)
@@ -75,7 +72,7 @@ static gboolean on_drag_data_received(GtkWidget *terminal, GdkDragContext *conte
                 data = (char *) gtk_selection_data_get_text(selection_data);
                 uris = strtok(data, "\n");
 
-                while (uris != NULL)
+                while ((uris != NULL) && (gtk_selection_data_get_length(data) > 0))
                 {
                     sprintf(url, " %s", uris + 7);
                     utf8_decode(url, url);
