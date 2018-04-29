@@ -14,7 +14,7 @@
 static gboolean open(GtkWidget *terminal, gpointer user_data)
 {
     char cmd[1000];
-    strcpy(cmd, "terminal");
+    strcpy(cmd, "terminal & disown");
     system(cmd);
     return TRUE;
 }
